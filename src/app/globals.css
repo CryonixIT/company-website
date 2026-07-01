@@ -9,17 +9,40 @@
   --accent: #35A29F;
   --muted-text: rgba(234, 236, 240, 0.7);
 
+  /* Accent opacity variants (centralized — change --accent and everything updates) */
+  --accent-5: color-mix(in srgb, var(--accent) 5%, transparent);
+  --accent-6: color-mix(in srgb, var(--accent) 6%, transparent);
+  --accent-8: color-mix(in srgb, var(--accent) 8%, transparent);
+  --accent-12: color-mix(in srgb, var(--accent) 12%, transparent);
+  --accent-15: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-25: color-mix(in srgb, var(--accent) 25%, transparent);
+  --accent-30: color-mix(in srgb, var(--accent) 30%, transparent);
+  --accent-40: color-mix(in srgb, var(--accent) 40%, transparent);
+
+  /* Reusable compound tokens */
+  --card-gradient: linear-gradient(160deg, var(--accent-6) 0%, rgba(255, 255, 255, 0.01) 80%);
+  --border-accent: var(--accent-15);
+  --glow-accent: 0 0 25px var(--accent-40);
+  --glow-accent-sm: 0 0 15px var(--accent-15);
+  --glow-accent-lg: 0 0 30px var(--accent-30);
+  --shadow-card-hover: 0 20px 45px -15px var(--accent-25);
+
+  /* Fonts */
   --font-sans: 'Rajdhani', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-title: 'Orbitron', sans-serif;
   --font-tech: 'Share Tech', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Selection colors derived from accent */
+  --selection-bg: color-mix(in srgb, var(--accent) 30%, var(--background));
+  --selection-text: var(--foreground);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card-bg: var(--card-bg);
-  --color-card-bg-hover: var(--color-card-bg-hover);
+  --color-card-bg-hover: var(--card-bg-hover);
   --color-accent: var(--accent);
   --color-muted-text: var(--muted-text);
 
@@ -34,6 +57,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* Custom scrollbar */
